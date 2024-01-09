@@ -6,7 +6,7 @@ function App() {
         PROPERTY MARKETPLACE
       </div>
       <div className="text-center">
-        DO WHATEVER YOU LIKE !!
+        DO WHATEVER YOU LIKE !! 
       </div>
     </>
   )
