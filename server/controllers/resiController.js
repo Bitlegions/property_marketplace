@@ -46,3 +46,17 @@ export const getAllRes = async (req, res ) => {
     })
     res.send(residencies)
 } 
+
+export const getResidency = async (req, res) => {
+    const {id} = req.params;
+
+    try{
+        const residency = await prisma.residency.findUnique({
+            where: {id}
+        })
+        res.send(residency)
+    }
+    catch(err){
+        throw new Error(err.message)
+    }
+}
