@@ -1,5 +1,8 @@
 import { prisma } from "../config/prismaConfig.js";
 
+
+// ROUTE:1 : Create :  POST "api/user/register" 
+// Create a User. No login required
 export const createUser = async (req, res) => {
   console.log("Creating a user");
 
@@ -9,15 +12,17 @@ export const createUser = async (req, res) => {
 
   if (!userExists) {
     const user = await prisma.user.create({ data: req.body });
-    res.send({
+    res.status(201).send({
       message: "User Created Succesfully",
       user: user,
     });
   } else {
-    res.status(201).send({ message: "User Already Registered" });
+    res.status(403).send({ message: "User Already Registered" });
   }
 };
 
+// ROUTE: 2 : Bookvisit : POST "api/user/bookVisit:id"
+// Booking visit of user. Login required
 export const bookVisit = async (req, res) => {
   const { email, date } = req.body;
   const { id } = req.params;
