@@ -1,5 +1,5 @@
-import { HiLocationMarker } from "react-icons/hi";
-import CountUp from "react-countup";
+// import CountUp from "react-countup";
+import Search from '../components/Search'
 const Hero = () => {
   return (
     <section className="hero-wrapper">
@@ -10,11 +10,7 @@ const Hero = () => {
           <div style={{ position: "absolute", top: "7%", right: "5%", width: "100%", maxWidth: "360px" }}>
             <nav className="navbar navbar-light bg-light" style={{ borderRadius: '7px' }}>
               <form className="form-inline">
-                <div className="d-flex align-items-center">
-                  <HiLocationMarker color="var(--blue)" size={35} />
-                  <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style={{ width: "100%" }} />
-                </div>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <Search />
               </form>
             </nav>
           </div>
