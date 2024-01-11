@@ -1,12 +1,14 @@
 import React from 'react'
-import { HiLocationMarker } from "react-icons/hi";
+import Propertiescard from '../components/Propertycard';
 import Search from '../components/Search';
+
 
 
 const Properties = () => {
   return (
     <>
         <Search />
+        <Propertiescard/>
         
     </>
   )
