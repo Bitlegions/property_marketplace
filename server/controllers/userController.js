@@ -1,7 +1,7 @@
 import { prisma } from "../config/prismaConfig.js";
 
 
-// ROUTE:1 : Create :  POST "api/user/register" 
+// ROUTE:1 : Register :  POST "api/user/register" 
 // Create a User. No login required
 export const createUser = async (req, res) => {
   console.log("Creating a user");
@@ -49,6 +49,8 @@ export const bookVisit = async (req, res) => {
   }
 };
 
+// ROUTE: 3 : GetAllBookings : GET "api/user/getAllBookings"
+// Fetch all booked visits. Login required    
 export const getBookings = async (req, res) => {
     const {email} = req.body
     try{
@@ -63,6 +65,8 @@ export const getBookings = async (req, res) => {
     }
 }
 
+// ROUTE: 4 : CancleBooking : POST "api/user/cancelBooking/:id"
+// Cancle booked visit. Login required
 export const cancelBooking = async (req, res) =>{
     const {email} = req.body
     const {id} = req.params
@@ -95,6 +99,8 @@ export const cancelBooking = async (req, res) =>{
     }
 }
 
+// ROUTE: 5 : toFav : POST "api/user/toFav/:rid"
+// Add resididenies to favorite. Login required
 export const toFav = async (req, res) => {
     const {email} = req.body
     const {rid} = req.params
@@ -133,6 +139,8 @@ export const toFav = async (req, res) => {
     }
 }
 
+// ROUTE: 6 : Get all Fav : POST "api/user/getAllFavs"
+// Get all favorite residencies. Login required
 export const getAllfavs = async (req, res) => {
     const {email} = req.body
 
