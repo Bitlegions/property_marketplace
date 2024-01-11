@@ -1,18 +1,12 @@
-import { useState } from 'react'
 import './App.css'
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import Residencies from './components/Residencies';
+import Website from './pages/Website'
+
 
 function App() {
 
   return (
     <>
-        <Navbar />
-        <Hero />
-        <Residencies />
-        <Footer />
+        <Website />
     </>
   )
 }
