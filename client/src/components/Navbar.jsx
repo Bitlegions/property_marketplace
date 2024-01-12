@@ -1,31 +1,38 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-
     return (
         <nav id='top' className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <a className="navbar-brand" style={{ fontSize: '30px' }} href="/">Porperty Marketplace</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <Link className="nav-link" aria-current="page" to="/properties">Properties</Link>
-                        <a className="nav-link" to="#contact-us" >Contact Us</a>
+            <a className="navbar-brand" style={{ fontSize: '30px' }} href="/">Property Marketplace</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/properties">Properties</Link>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#contact-us">Contact Us</a> 
+                    </li>
+                    <li className="nav-item">
                         {/* <Link className="nav-link" to="#value">Add property</Link> */}
-                        <div>
-                            {!localStorage.getItem('token') ? <div className="d-flex">
-                                <Link className="btn btn-dark mx-1 " to="/login" role="button">Login</Link>
+                    </li>
+                    <div className="nav-item">
+                        {!localStorage.getItem('token') ? (
+                            <div className="d-flex">
+                                <Link className="btn btn-dark mx-1" to="/login" role="button">Login</Link>
                                 <Link className="btn btn-dark mx-1" to="/signup" role="button">Signup</Link>
-                            </div> : <button onClick={handleLogout} className="btn btn-light">Logout</button>}
-                        </div>
+                            </div>
+                        ) : (
+                            <button onClick={handleLogout} className="btn btn-light">Logout</button>
+                        )}
                     </div>
-                </div>
+                </ul>
             </div>
         </nav>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

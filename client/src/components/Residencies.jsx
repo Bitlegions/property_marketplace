@@ -1,5 +1,4 @@
 import React from "react";
-import data from "../utils/slider.json";
 import PropertyCard from "./Propertycard";
 
 
