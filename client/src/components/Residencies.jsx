@@ -1,6 +1,7 @@
 import React from "react";
 import data from "../utils/slider.json";
-import Propertiescard from "./Propertycard";
+import PropertyCard from "./Propertycard";
+
 
 const Residencies = () => {
   return (
@@ -11,7 +12,7 @@ const Residencies = () => {
           <div style={{ color: '#1f3e72' }}>Popular Residencies</div>
         </div>
         {/* slider */}
-        <Propertiescard/>
+        <PropertyCard />
       </div>
     </div>
   );
