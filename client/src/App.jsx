@@ -7,25 +7,30 @@ import Footer from './components/Footer';
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Properties from './pages/Properties';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 
 function App() {
+  const queryClient = new QueryClient();
 
   return (
     <>
-      <Router>
-        <Suspense fallback={<div>Loding...</div>} >
-          <Navbar/>
-        <Routes>
-            <Route path='/' element={<Website />} />
-            <Route path='/properties' element={<Properties />} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='/signup' element={<Signup/>} />
+      <QueryClientProvider client={queryClient}>
 
-        </Routes>
-        <Footer/>
-        </Suspense>
-      </Router>
+        <Router>
+          <Suspense fallback={<div>Loding...</div>} >
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Website />} />
+              <Route path='/properties' element={<Properties />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+
+            </Routes>
+            <Footer />
+          </Suspense>
+        </Router>
+      </QueryClientProvider>
     </>
   )
 }
