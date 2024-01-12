@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './components/Login'
-import Signup from './components/Signup'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 import Properties from './pages/Properties';
 
 
