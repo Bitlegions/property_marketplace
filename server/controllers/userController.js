@@ -4,7 +4,6 @@ import { prisma } from "../config/prismaConfig.js";
 // ROUTE:1 : Register :  POST "api/user/register" 
 // Create a User. No login required
 export const createUser = async (req, res) => {
-  console.log("Creating a user");
 
   let { email } = await req.body;
 

@@ -5,7 +5,7 @@ import { prisma } from "../config/prismaConfig.js";
 export const createResidency = async (req, res) => {
   const {
     title, description, price, address, country, city, facilities, image, userEmail,
-  } = req.body.data;
+  } = req.body;
 
   try {
     const residency = await prisma.residency.create({
@@ -16,7 +16,8 @@ export const createResidency = async (req, res) => {
   } catch (err) {
     if (err.code == "P2002") {
       // P2002 is code for violation of unique element => here it is address
-      throw new Error("A Residency with address already exists");
+      res.send({ message: "A Residency with address already exists" });
+      // throw new Error("A Residency with address already exists");
     } else {
       throw new Error(err.message);
     }
@@ -26,13 +27,30 @@ export const createResidency = async (req, res) => {
 // 2. ROUTE: GET "/api/residency/getAllRes
 // Get all residency. No Login Required
 export const getAllRes = async (req, res) => {
+  // const residencies = await prisma.residency.findMany({
+  //   orderBy: {
+  //     createdAt: "desc"
+  //   }
+  // })
+  // res.send(residencies)
+
   const residencies = await prisma.residency.findMany({
+    where: {
+      updatedat: {
+        not: {
+          equals: new Date("2023-01-09T12:00:00Z"),
+        },
+      },
+    },
     orderBy: {
-      createdAt: "desc"
-    }
-  })
+      createdAt: "desc",
+    },
+  });
+  
   res.send(residencies)
+  
 }
+
 
 // 3. ROUTE: GET "/api/residency/:id
 // Get particular residency. No Login Required
