@@ -8,6 +8,9 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Properties from './pages/Properties';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
+import {ReactQueryDevtools} from 'react-query/devtools'
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -30,6 +33,8 @@ function App() {
             <Footer />
           </Suspense>
         </Router>
+        <ToastContainer/>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   )
