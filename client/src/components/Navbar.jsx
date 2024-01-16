@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+    const handleLogout = () =>{
+        // localStorage.removeItem('token');
+        // navigate('/login');
+    }
     return (
         <nav id='top' className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" style={{ fontSize: '30px' }} href="/">Property Marketplace</a>

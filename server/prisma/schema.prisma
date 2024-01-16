@@ -30,8 +30,8 @@ model Residency {
     userEmail   String
     owner       User   @relation("Owner", fields: [userEmail], references: [email])
     createdAt DateTime @default(now())
-    // updatedat DateTime @updatedAt
-    updatedat DateTime @updatedAt @default(now())
+    // updatedAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt @default(now())
 
     @@unique([address, userEmail])
 }
