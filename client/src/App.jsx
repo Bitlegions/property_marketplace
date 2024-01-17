@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './pages/Login'
-import Signup from './pages/Signup'
 import Properties from './pages/Properties';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
@@ -28,8 +26,8 @@ function App() {
               <Route path='/' element={<Website />} />
               <Route path='/properties' element={<Properties />} />
               <Route path='/properties/:propertyId' element={<Property />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
+              {/* <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} /> */}
 
             </Routes>
             <Footer />

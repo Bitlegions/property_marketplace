@@ -8,6 +8,7 @@ import { getProperty } from '../utils/api';
 import { FaShower } from "react-icons/fa";
 import { AiTwotoneCar } from "react-icons/ai";
 import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
+import Map from '../components/Map';
 
 const Property = () => {
   const { pathname } = useLocation();
@@ -43,7 +44,7 @@ const Property = () => {
           </div>
 
           {/* facilities */}
-          <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', gap: '2rem', marginTop:'7px'}}>
+          <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', gap: '2rem', marginTop: '7px' }}>
             {/* bathrooms */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <FaShower size={20} color="#1F3E72" />
@@ -57,37 +58,33 @@ const Property = () => {
             </div>
 
             {/* rooms */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop:'7px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '7px' }}>
               <MdMeetingRoom size={20} color="#1F3E72" />
               <span>{data?.facilities.bedrooms} Room/s</span>
             </div>
           </div>
 
           {/* description */}
-          <span style={{ fontSize: '1rem', textAlign: 'justify', marginTop:'7px' }}>
+          <span style={{ fontSize: '1rem', textAlign: 'justify', marginTop: '7px' }}>
             {data?.description}
           </span>
 
           {/* address */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop:'7px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '7px' }}>
             <MdLocationPin size={25} />
-            <span style={{ fontSize: '1rem' }}>
+            <span style={{ fontSize: '1rem', fontWeight: 650 }}>
               {data?.address} {data?.city} {data?.country}
             </span>
           </div>
 
-          <button style={{ maxWidth:'20rem', padding: '10px', background: '#3498db', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book visit</button>
+          <button className='btn btn-dark' style={{ maxWidth: '15rem', marginTop: '10px', padding: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book your visit</button>
 
-          
+          <div className="map" style={{paddingBottom:'70px'}}>
+            <Map address={data?.address} city={data?.city} country={data?.country} />
+          </div>
+
         </div>
       </div>
-
-      {/* right side */}
-      <div>
-        right side
-      </div>
-
-
     </div>
 
   )
