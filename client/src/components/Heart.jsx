@@ -38,7 +38,7 @@ const Heart = ({ id, isFavorite }) => {
   };
 
   return (
-    <AiFillHeart size={24} color={favorite ? 'red' : 'black'} style={{ position: 'absolute', top: '25px', right: '30px', zIndex: '1', cursor: 'pointer' }} onClick={toggleFavorite} />
+    <AiFillHeart size={24} color={favorite ? '#fa3e5f' : 'white'} style={{ position: 'absolute', top: '25px', right: '30px', zIndex: '1', cursor: 'pointer' }} onClick={toggleFavorite} />
   );
 }
 

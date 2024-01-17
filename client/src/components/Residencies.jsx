@@ -23,13 +23,15 @@ const Residencies = () => {
     <div >
       <div id="residencies"  style={{ width: '85%', margin: '0 auto', marginBottom:'100px' }}>
         <div >
-          <span style={{ color: "orange" }}>Best Choices</span>
-          <div style={{ color: '#1f3e72' }}>Popular Residencies</div>
+          <span style={{ color: "orange", fontSize: '2.5rem', fontWeight: 'bold' }}>Best Choices</span>
+          <div style={{ color: '#1f3e72', fontSize: '1.5rem' }}>Popular Residencies</div>
         </div>
         {/* slider */}
-        {data.slice(0, 4).map((card, i) => (
-          <PropertyCard card={card} key={i} />
-        ))}
+        <div className="d-flex flex-wrap" >
+          {data.slice(8, 12).map((card, i) => (
+            <PropertyCard card={card} key={i} />
+            ))}
+        </div>
       </div>
     </div>
   );

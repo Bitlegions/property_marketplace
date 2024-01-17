@@ -21,9 +21,8 @@ const Properties = () => {
   return (
     <>
       <Search />
-      <div className='d-flex flex-wrap'>{
+      <div className='d-flex flex-wrap' style={{margin:'0 5vh'}} >{
         data.map((card,i)=> (<PropertyCard card={card} key={i} />))
-        
         }
       </div>
     </>
