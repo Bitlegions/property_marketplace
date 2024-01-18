@@ -1,9 +1,8 @@
-import React from 'react'
 import Hero from '../components/Hero';
 import Residencies from '../components/Residencies';
 
-
 const Website = () => {
+
   return (
     <>
       <Hero />
@@ -13,3 +12,4 @@ const Website = () => {
 }
 
 export default Website
+

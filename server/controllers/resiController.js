@@ -53,7 +53,6 @@ export const getResidency = async (req, res) => {
     const residency = await prisma.residency.findUnique({
       where: { id },
     });
-    console.log(residency);
     res.send(residency)
   }
   catch (err) {

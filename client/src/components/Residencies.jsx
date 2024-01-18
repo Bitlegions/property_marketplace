@@ -28,7 +28,7 @@ const Residencies = () => {
         </div>
         {/* slider */}
         <div className="d-flex flex-wrap" >
-          {data.slice(8, 12).map((card, i) => (
+          {data?.slice(8, 12).map((card, i) => (
             <PropertyCard card={card} key={i} />
             ))}
         </div>

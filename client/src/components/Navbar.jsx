@@ -25,7 +25,7 @@ const Navbar = () => {
                     </li>
                     <div className="nav-item">
                         {!isAuthenticated ? 
-                            <div className="d-flex">
+                            <div className="d-flex" style={{marginLeft:'8vh'}}>
                                 <Link onClick={loginWithRedirect} className="btn btn-dark mx-1" role="button">Login</Link>
                             </div>
                          : 

@@ -1,34 +1,78 @@
-import React from 'react'
-import {Avatar, Menu} from '@mantine/core'
-import { useNavigate } from 'react-router-dom'
- 
-const ProfileMenu = ({user, logout}) => {
-    const navigate = useNavigate()
-  return (
-    <Menu>
-        <Menu.Target>
-            <Avatar src={user?.picture} alt='user image' radius={20}/>
-        </Menu.Target>
-        <Menu.Dropdown>
-            <Menu.Item onClick={()=> navigate("./favourites", {replace: true})}>
-                Favourites
-            </Menu.Item>
+// import React from 'react'
+// import {Avatar, Menu} from '@mantine/core'
+// import { useNavigate } from 'react-router-dom'
 
-            <Menu.Item onClick={()=> navigate("./bookings", {replace: true})}>
-                Bookings
-            </Menu.Item>
+// const ProfileMenu = ({user, logout}) => {
+//     const navigate = useNavigate()
+//   return (
+//     <Menu>
+//         <Menu.Target>
+//             <Avatar src={user?.picture} alt='user image' radius={20}/>
+//         </Menu.Target>
+//         <Menu.Dropdown>
+//             <Menu.Item onClick={()=> navigate("./favourites", {replace: true})}>
+//                 Favourites
+//             </Menu.Item>
 
-            <Menu.Item onClick={()=>{
-                localStorage.clear();
-                logout()
-            }}>
-                Logout
-            </Menu.Item>
-        </Menu.Dropdown>
-    </Menu>
-  )
-}
+//             <Menu.Item onClick={()=> navigate("./bookings", {replace: true})}>
+//                 Bookings
+//             </Menu.Item>
 
-export default ProfileMenu
+//             <Menu.Item onClick={()=>{
+//                 localStorage.clear();
+//                 logout()
+//             }}>
+//                 Logout
+//             </Menu.Item>
+//         </Menu.Dropdown>
+//     </Menu>
+//   )
+// }
+
+// export default ProfileMenu
+
+
+import React, { useState } from 'react';
+
+const ProfileMenu = ({ user, logout }) => {
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };
+
+    return (
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '20px', overflow: 'hidden', cursor: 'pointer', marginLeft: '7vh' }} onClick={toggleDropdown} >
+                <img src={user?.picture} alt="User Image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <div style={{ display: isDropdownOpen ? 'block' : 'none', borderRadius: '10px', position: 'absolute', top: '50px', right: '0', backgroundColor: '#f9f9f9', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', padding: '10px', zIndex: '1', width: '200px' }}>
+                <ul style={{ listStyle: 'none', padding: '0', fontSize: '20px' }} >
+                    <li>
+                        <a href="#" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
+                            Favourites
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
+                            Booking
+                        </a>
+                    </li>
+                    <li>
+                        <a style={{ cursor: 'pointer', display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }} 
+                            onClick={() => {
+                                localStorage.clear();
+                                logout()
+                        }}>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
+};
+
+export default ProfileMenu;
 
 
