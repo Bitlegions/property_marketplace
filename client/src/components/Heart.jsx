@@ -1,5 +1,4 @@
-// import React from 'react'
-// import { AiFillHeart } from 'react-icons/ai'
+// // import { AiFillHeart } from 'react-icons/ai'
 
 
 // const Heart = () => {
@@ -11,11 +10,6 @@
 
 // export default Heart
 
-
-
-
-
-// import React from 'react';
 // import { AiFillHeart } from 'react-icons/ai';
 
 // const Heart = ({ id, isFavorite }) => {
@@ -26,8 +20,8 @@
 
 // export default Heart;
 
-import React, { useState } from 'react';
-import { AiFillHeart } from 'react-icons/ai';
+import  { useState } from 'react';
+
 
 const Heart = ({ id, isFavorite }) => {
   const [favorite, setFavorite] = useState(isFavorite);
