@@ -28,6 +28,8 @@ const Layout = () => {
             console.log("Enter in try-cathc block");
             try {
             console.log("Enter in try block");
+
+            // "ERROR IN 'RES', causing userDetails to be unable to fetch." 
                 const res = await getAccessTokenWithPopup({
                     authorizationParams: {
                         audience: "http://localhost:5555",

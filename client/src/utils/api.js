@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {toast} from 'react-toastify';
+import dayjs from 'dayjs'
 
 export const api =axios.create({
     baseURL:'http://localhost:5555/api'
@@ -52,4 +53,44 @@ export const createUser = async (email, token) => {
       throw error;
     }
     console.log("createUser is called in api.js");
+  };
+
+
+  export const bookVisit = async (date, propertyId, email, token) => {
+    try {
+      await api.post(
+        `/user/bookVisit/${propertyId}`,
+        {
+          email,
+          id: propertyId,
+          date: dayjs(date).format("DD/MM/YYYY"),
+        },
+        {
+          headers: { 
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      toast.error("Something went wrong, Please try again");
+      throw error;
+    }
+  };
+
+
+  export const removeBooking = async (id, email, token) => {
+    try {
+      await api.post(
+        `/user/removeBooking/${id}`, {email},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      toast.error("Something went wrong, Please try again");
+  
+      throw error;
+    }
   };

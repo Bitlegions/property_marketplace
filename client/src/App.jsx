@@ -2,8 +2,6 @@ import './App.css'
 import Website from './pages/Website'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, useState } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import Properties from './pages/Properties';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
