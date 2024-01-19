@@ -36,11 +36,11 @@ const Layout = () => {
                 });
                 console.log("res in Layout.jsx is :" + res);
 
-                localStorage.setItem("access_token", res);
+                localStorage.setItem("access_token : ", res);
                 setUserDetails((prev) => ({ ...prev, token: res }));
                 mutate(res);
             } catch (error) {
-                console.error("Error obtaining access token:", error);
+                console.error("Error obtaining access token:", error); 
             }
         };
 

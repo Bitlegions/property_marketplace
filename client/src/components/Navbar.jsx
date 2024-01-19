@@ -26,7 +26,7 @@ const Navbar = () => {
                     <div className="nav-item">
                         {!isAuthenticated ? 
                             <div className="d-flex" style={{marginLeft:'8vh'}}>
-                                <Link onClick={loginWithRedirect} className="btn btn-dark mx-1" role="button">Login</Link>
+                                <button onClick={()=> loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
                             </div>
                          : 
                          <ProFileMenu user={user} logout={logout} />

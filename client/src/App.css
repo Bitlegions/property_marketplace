@@ -1,6 +1,6 @@
 .App{
   position: relative;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 .App>:nth-child(1)
 {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
@@ -9,11 +9,19 @@ import { FaShower } from "react-icons/fa";
 import { AiTwotoneCar } from "react-icons/ai";
 import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
 import Map from '../components/Map';
+import useAuthCheck from '../hooks/useAuthCheck';
+import { useAuth0 } from '@auth0/auth0-react';
+import BookingModal from '../components/BookingModal';
 
 const Property = () => {
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1)[0];
   const { data, isLoading, isError } = useQuery(["resd", id], () => getProperty(id));
+
+  const [modalOpened, setModalOpened] = useState(false);
+  const { validateLogin } = useAuthCheck();
+  const { user } = useAuth0();
+
   if (isError) {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <span>Error while fetching data!</span>
@@ -77,11 +85,34 @@ const Property = () => {
             </span>
           </div>
 
-          <button className='btn btn-dark' style={{ maxWidth: '15rem', marginTop: '10px', padding: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book your visit</button>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop:'20px' }}>
 
-          <div className="map" style={{paddingBottom:'70px'}}>
-            <Map address={data?.address} city={data?.city} country={data?.country} />
+            {/* Map componenet */}
+            <div className="map" style={{ width: '60%', height: '100%', paddingBottom: '70px' }}>
+              <Map address={data?.address} city={data?.city} country={data?.country} />
+            </div>
+
+            <div>
+              {/* Bokking model  */}
+              <BookingModal
+                opened={modalOpened}
+                setOpened={setModalOpened}
+                propertyId={id}
+                email={user?.email}
+              />
+
+
+              {/* Booking button */}
+              <button
+                onClick={() => {
+                  validateLogin() && setModalOpened(true)
+                }}
+                className='btn btn-dark' style={{ maxWidth: '15rem', marginTop: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book your visit</button>
+
+            </div>
+
           </div>
+
 
         </div>
       </div>
