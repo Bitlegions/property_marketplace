@@ -43,13 +43,16 @@ export const createUser = async (email, token) => {
     try {
       await api.post( `/user/register`, { email } ,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         } 
       );
+      toast.success("Create account successfully", {
+        position: "bottom-right",
+      });
     } catch (error) {
-      toast.error("Something went wrong, Please try again");
+      // toast.error("Something went wrong, Please try again");
       throw error;
     }
     console.log("createUser is called in api.js");
@@ -66,9 +69,9 @@ export const createUser = async (email, token) => {
           date: dayjs(date).format("DD/MM/YYYY"),
         },
         {
-          headers: { 
-            Authorization: `Bearer ${token}`,
-          },
+          // headers: { 
+          //   Authorization: `Bearer ${token}`,
+          // },
         }
       );
     } catch (error) {
@@ -83,11 +86,14 @@ export const createUser = async (email, token) => {
       await api.post(
         `/user/removeBooking/${id}`, {email},
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         }
       );
+      toast.error("Cancle booking successfully", {
+        position: "bottom-right",
+      });
     } catch (error) {
       toast.error("Something went wrong, Please try again");
   

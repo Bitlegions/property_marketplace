@@ -6,8 +6,11 @@ import { useMutation } from 'react-query';
 import UserDetailContext from '../context/UserDetailContext'
 import { bookVisit } from '../utils/api';
 import { toast } from 'react-toastify';
+import useAuthCheck from '../hooks/useAuthCheck';
 
 function BookingModal({ email, propertyId }) {
+
+  const { validateLogin } = useAuthCheck();
 
   const [value, setvalue] = useState(new Date());
   const today = new Date();
@@ -22,7 +25,6 @@ function BookingModal({ email, propertyId }) {
       userDetails: { token },
       setUserDetails  
     } = useContext(UserDetailContext);
-    console.log("token in BookinModal is : " + token );
 
     const handleBookingSuccess = () => {
       toast.success("You have booked your visit", {
@@ -45,14 +47,27 @@ function BookingModal({ email, propertyId }) {
     onSuccess: () => handleBookingSuccess(),
     onError: ({ response }) => toast.error(response.data.message)
     })
+
   return (
-    <DayPicker
-      mode="single"
-      selected={value}
-      onSelect={setvalue}
-      footer={<p style={{ fontSize: '1.3rem' }}  >You picked {format(value, 'PP')}.</p>}
-      disabled={isPastDay || isLoading}
-    />
+    <>
+      <DayPicker
+        mode="single"
+        selected={value}
+        onSelect={setvalue}
+        footer={<p style={{ fontSize: '1.3rem' }}  >You picked {format(value, 'PP')}.</p>}
+        disabled={isPastDay || isLoading}
+        
+        // onDayClick={mutate()}
+      />
+      <button
+        onClick={() => {
+          validateLogin()
+          mutate()
+        }}
+        className='btn btn-dark' style={{ width:'15rem', maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}>
+        Book your visit
+        </button>
+      </>
   );
 }
 

@@ -21,15 +21,14 @@ const Layout = () => {
     const { mutate } = useMutation({
         mutationKey: [user?.email],
         mutationFn: (token) => createUser(user?.email, token),
-    } , console.log("called createUser from Layout.jsx"));
+    });
 
     useEffect(() => {
         const getTokenAndRegister = async () => {
-            console.log("Enter in try-cathc block");
             try {
             console.log("Enter in try block");
 
-            // "ERROR IN 'RES', causing userDetails to be unable to fetch." 
+            // "ERROR IN 'RES', causing userDetails to be unable to fetch, so createUser reqvest can't call" 
                 const res = await getAccessTokenWithPopup({
                     authorizationParams: {
                         audience: "http://localhost:5555",
@@ -46,7 +45,8 @@ const Layout = () => {
             }
         };
 
-        isAuthenticated && getTokenAndRegister();
+        // isAuthenticated && getTokenAndRegister();
+        isAuthenticated && mutate();
     }, [isAuthenticated]);
 
     return (

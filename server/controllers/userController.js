@@ -45,7 +45,7 @@ export const bookVisit = async (req, res) => {
       res.send("Your visit is booked successfully");
     }
   } catch (err) {
-    throw new Error(err.message);
+    // throw new Error(err.message);
   }
 };
 

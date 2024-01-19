@@ -8,7 +8,6 @@ import { FaShower } from "react-icons/fa";
 import { AiTwotoneCar } from "react-icons/ai";
 import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
 import Map from '../components/Map';
-import useAuthCheck from '../hooks/useAuthCheck';
 import { useAuth0 } from '@auth0/auth0-react';
 import BookingModal from '../components/BookingModal';
 import UserDetailContext from '../context/UserDetailContext'
@@ -18,7 +17,6 @@ const Property = () => {
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1)[0];
   const { data, isLoading, isError } = useQuery(["resd", id], () => getProperty(id));
-  const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
 
   const {
@@ -110,11 +108,6 @@ const Property = () => {
 
             <div>
               {/* Bokking model  */}
-              <BookingModal
-                propertyId={id}
-                email={user?.email}
-              />
-
 
               {/* Booking button */}
               {bookings?.map((booking) => booking.id).includes(id) ? (
@@ -132,16 +125,11 @@ const Property = () => {
                   </div>
                 </>
               ) : ( 
-                <button
-                  onClick={() => {
-                    validateLogin()
-
-                  }}
-                  className='btn btn-dark' style={{ width:'15rem', maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}>
-                  Book your visit
-                </button>)
-
-              }
+                <BookingModal
+                propertyId={id}
+                email={user?.email}
+                />
+                )}
             </div>
 
           </div>
