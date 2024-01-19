@@ -1,7 +1,11 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProFileMenu from './ProFileMenu';
 
 const Navbar = () => {
+    const {loginWithRedirect,isAuthenticated,user,logout} = useAuth0()
+
     return (
         <nav id='top' className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" style={{ fontSize: '30px' }} href="/">Property Marketplace</a>
@@ -20,14 +24,13 @@ const Navbar = () => {
                         {/* <Link className="nav-link" to="#value">Add property</Link> */}
                     </li>
                     <div className="nav-item">
-                        {!localStorage.getItem('token') ? (
-                            <div className="d-flex">
-                                <Link className="btn btn-dark mx-1" to="/login" role="button">Login</Link>
-                                <Link className="btn btn-dark mx-1" to="/signup" role="button">Signup</Link>
+                        {!isAuthenticated ? 
+                            <div className="d-flex" style={{marginLeft:'8vh'}}>
+                                <Link onClick={loginWithRedirect} className="btn btn-dark mx-1" role="button">Login</Link>
                             </div>
-                        ) : (
-                            <button onClick={handleLogout} className="btn btn-light">Logout</button>
-                        )}
+                         : 
+                         <ProFileMenu user={user} logout={logout} />
+                        }
                     </div>
                 </ul>
             </div>

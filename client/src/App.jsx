@@ -1,32 +1,49 @@
 import './App.css'
 import Website from './pages/Website'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './pages/Login'
-import Signup from './pages/Signup'
 import Properties from './pages/Properties';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
+import { ReactQueryDevtools } from 'react-query/devtools'
+import "react-toastify/dist/ReactToastify.css";
+import Property from './pages/Property';
+import UserDeatilContext from './context/UserDetailContext';
+import Layout from './components/Layout';
 
 
 function App() {
+  const queryClient = new QueryClient();
+  const [userDetails, setuserDetails] = useState({
+    favourite: [],
+    bookings: [],
+    token: null
+  })
 
   return (
-    <>
-      <Router>
-        <Suspense fallback={<div>Loding...</div>} >
-          <Navbar/>
-        <Routes>
-            <Route path='/' element={<Website />} />
-            <Route path='/properties' element={<Properties />} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='/signup' element={<Signup/>} />
+      <UserDeatilContext.Provider value={{ userDetails, setuserDetails }}>
+        <QueryClientProvider client={queryClient}>
+          
+          <Router>
+            <Suspense fallback={<div>Loding...</div>} >
+                <Routes>
+                  <Route element={<Layout />} >
 
-        </Routes>
-        <Footer/>
-        </Suspense>
-      </Router>
-    </>
+                  <Route path='/' element={<Website />} />
+                  <Route path='/properties' element={<Properties />} />
+                  <Route path='/properties/:propertyId' element={<Property />} />
+
+                  </Route>
+                </Routes>
+            </Suspense>
+          </Router>
+          
+          <ToastContainer />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </UserDeatilContext.Provider>
   )
 }
 

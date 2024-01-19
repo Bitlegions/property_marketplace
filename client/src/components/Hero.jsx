@@ -1,5 +1,7 @@
 // import CountUp from "react-countup";
-import Search from "../components/Search";
+import Search from '../components/Search'
+// import CountUp from 'react-countup'
+
 const Hero = () => {
   return (
     <section className="hero-wrapper">
