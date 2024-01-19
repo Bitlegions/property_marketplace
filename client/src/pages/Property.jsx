@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import Heart from '../components/Heart';
 import { getProperty } from '../utils/api';
-
 import { FaShower } from "react-icons/fa";
 import { AiTwotoneCar } from "react-icons/ai";
 import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
@@ -85,7 +84,7 @@ const Property = () => {
             </span>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop:'20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
 
             {/* Map componenet */}
             <div className="map" style={{ width: '60%', height: '100%', paddingBottom: '70px' }}>
@@ -107,7 +106,7 @@ const Property = () => {
                 onClick={() => {
                   validateLogin() && setModalOpened(true)
                 }}
-                className='btn btn-dark' style={{ maxWidth: '15rem', marginTop: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book your visit</button>
+                className='btn btn-dark' style={{ maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}> Book your visit</button>
 
             </div>
 

@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import dayjs from 'dayjas'
 import {toast} from 'react-toastify';
 
 export const api =axios.create({
