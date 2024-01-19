@@ -1,14 +1,36 @@
 // import CountUp from "react-countup";
-import Search from '../components/Search'
+import Search from "../components/Search";
 const Hero = () => {
   return (
     <section className="hero-wrapper">
-
       <div style={{ position: "relative", textAlign: "center" }}>
-        <div style={{ position: "relative", display: "inline-block", width: "85%", marginBottom: "30px", paddingTop: '10px' }}>
-          <img src="../../public/contact.jpg" style={{ width: "100%", borderRadius: '7px' }} alt="" />
-          <div style={{ position: "absolute", top: "7%", right: "5%", width: "100%", maxWidth: "360px" }}>
-            <nav className="navbar navbar-light bg-light" style={{ borderRadius: '7px' }}>
+        <div
+          style={{
+            position: "relative",
+            display: "inline-block",
+            width: "85%",
+            marginBottom: "30px",
+            paddingTop: "10px",
+          }}
+        >
+          <img
+            src="../../public/contact.jpg"
+            style={{ width: "100%", borderRadius: "7px" }}
+            alt=""
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "7%",
+              right: "5%",
+              width: "100%",
+              maxWidth: "360px",
+            }}
+          >
+            <nav
+              className="navbar navbar-light bg-light"
+              style={{ borderRadius: "7px" }}
+            >
               <form className="form-inline">
                 <Search />
               </form>
@@ -39,10 +61,8 @@ const Hero = () => {
               </div>
             </div>
           </div> */}
-
         </div>
       </div>
-
     </section>
   );
 };
