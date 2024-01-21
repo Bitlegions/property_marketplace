@@ -134,11 +134,30 @@ export const getAllfavs = async (email) => {
         // },
       }
     );
-    console.log(res.data["favResidenciesId"]);
     return res.data["favResidenciesId"]
 
-  } catch (e) {
+  } catch (error) {
     toast.error("Something went wrong while fetching favs");
-    throw e
+    throw error
+  }
+} 
+
+// export const getBookings = async (email, token) => {
+export const getAllBookings = async (email) => {
+  // if(!token) return 
+  try {
+    const res = await api.post(
+      `/user/getAllBookings`, { email },
+      {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      }
+    );
+    return res.data["bookedVisits"]
+
+  } catch (error) {
+    toast.error("Something went wrong while fetching bookings");
+    throw error
   }
 } 

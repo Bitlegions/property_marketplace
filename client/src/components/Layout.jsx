@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-// import useBookings from "../../hooks/useBookings";
 
 import UserDetailContext from "../context/UserDetailContext";
 import { useMutation } from "react-query";
@@ -9,11 +8,12 @@ import { createUser } from "../utils/api";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import useFavourites from "../hooks/useFavourites";
+import useBookings from "../hooks/useBookings";
 
 const Layout = () => {
 
       useFavourites()
-    //   useBookings()
+      useBookings()
 
     const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
     const { setUserDetails } = useContext(UserDetailContext);

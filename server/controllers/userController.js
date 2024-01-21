@@ -52,12 +52,23 @@ export const bookVisit = async (req, res) => {
 // ROUTE: 3 : GetAllBookings : GET "api/user/getAllBookings"
 // Fetch all booked visits. Login required    
 export const getBookings = async (req, res) => {
+    
     const {email} = req.body
+    
+    if (!email) {
+        return res.status(400).json({ message: 'Email is required in the request body for get bookings' });
+    }
+
     try{
         const bookings = await prisma.user.findUnique({
             where: {email},
             select: {bookedVisits: true}
         })
+
+        if (!bookings) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         res.status(200).send(bookings)
     }
     catch(err){
@@ -168,9 +179,7 @@ export const getAllfavs = async (req, res) => {
     try {
         const favRes = await prisma.user.findUnique({
             where: { email },
-            select: {
-                favResidenciesId: true
-            }
+            select: {favResidenciesId: true}
         });
 
         if (!favRes) {
@@ -182,4 +191,3 @@ export const getAllfavs = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }
-
