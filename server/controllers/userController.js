@@ -80,7 +80,7 @@ export const cancelBooking = async (req, res) =>{
         const index = user.bookedVisits.findIndex((visit) => visit.id === id)
 
         if(index === -1){
-            res.staus(404).json({message: "Booking Not found"})
+            res.status(404).json({message: "Booking Not found"})
         }
         else{
             user.bookedVisits.splice(index, 1)

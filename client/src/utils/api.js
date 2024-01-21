@@ -59,7 +59,8 @@ export const createUser = async (email, token) => {
   };
 
 
-  export const bookVisit = async (date, propertyId, email, token) => {
+  // export const bookVisit = async (date, propertyId, email, token) => {
+    export const bookVisit = async (date, propertyId, email) => {
     try {
       await api.post(
         `/user/bookVisit/${propertyId}`,
@@ -75,27 +76,28 @@ export const createUser = async (email, token) => {
         }
       );
     } catch (error) {
-      toast.error("Something went wrong, Please try again");
+      // toast.error("Something went wrong, Please try again");
       throw error;
     }
   };
 
 
-  export const removeBooking = async (id, email, token) => {
+  // export const removeBooking = async (id, email, token) => {
+    export const removeBooking = async (id, email) => {
     try {
       await api.post(
-        `/user/removeBooking/${id}`, {email},
+        `/user/cancelBooking/${id}`, {email},
         {
           // headers: {
           //   Authorization: `Bearer ${token}`,
           // },
         }
-      );
-      toast.error("Cancle booking successfully", {
-        position: "bottom-right",
-      });
+      )
+      // toast.error("Cancle booking successfully", {
+      //   position: "bottom-right",
+      // });
     } catch (error) {
-      toast.error("Something went wrong, Please try again");
+      // toast.error("Something went wrong, Please try again");
   
       throw error;
     }

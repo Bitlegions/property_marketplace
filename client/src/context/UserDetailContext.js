@@ -1,5 +1,13 @@
-import {createContext} from 'react'
+// import {createContext} from 'react'
 
-const UserDeatilContext = createContext();
+// const UserDetailContext = createContext();
 
-export default UserDeatilContext;
+// export default UserDetailContext;
+
+
+import { createContext } from 'react'
+const UserDetailContext = createContext({
+    userDetails: { bookings: [], favourite: [], token:null },
+    setUserDetails: () => {},
+  });
+export default UserDetailContext;

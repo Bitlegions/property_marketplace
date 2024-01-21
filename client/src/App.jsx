@@ -1,14 +1,14 @@
 import './App.css'
 import Website from './pages/Website'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Suspense, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import Properties from './pages/Properties';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import "react-toastify/dist/ReactToastify.css";
 import Property from './pages/Property';
-import UserDeatilContext from './context/UserDetailContext';
+import UserDetailContext from './context/UserDetailContext';
 import Layout from './components/Layout';
 
 
@@ -20,8 +20,11 @@ function App() {
     token: null
   })
 
+  console.log(userDetails);
+
   return (
-      <UserDeatilContext.Provider value={{ userDetails, setuserDetails }}>
+    <React.StrictMode>
+      <UserDetailContext.Provider value={{ userDetails, setuserDetails }}>
         <QueryClientProvider client={queryClient}>
           
           <Router>
@@ -41,7 +44,8 @@ function App() {
           <ToastContainer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
-      </UserDeatilContext.Provider>
+      </UserDetailContext.Provider>
+    </React.StrictMode>
   )
 }
 

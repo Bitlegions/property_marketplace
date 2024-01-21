@@ -21,18 +21,18 @@ const Property = () => {
 
   const {
     userDetails: { token, bookings },
-    setUserDetails
+    setuserDetails
   } = useContext(UserDetailContext);
 
   const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
     mutationFn: () => removeBooking(id, user?.email, token),
     onSuccess: () => {
-      setUserDetails((prev) => ({ 
+      setuserDetails((prev) => ({
         ...prev,
         bookings: prev.bookings.filter((booking) => booking?.id !== id),
       }));
 
-      toast.success("Booking cancelled", { position: "bottom-right" });
+      toast.error("Booking cancelled", { position: "bottom-right" });
     },
   });
 
@@ -112,24 +112,26 @@ const Property = () => {
               {/* Booking button */}
               {bookings?.map((booking) => booking.id).includes(id) ? (
                 <>
-                  <button
-                    className='btn btn-danger' style={{  width:'15rem', maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}
-                    onClick={()=>cancelBooking()}
-                    disabled={cancelling}
+                  <div style={{marginLeft:'10px'}}>
+                    <div style={{ marginLeft: '11px', fontSize: '1.2rem' }}>
+                      Your visit already booked for date{" "}
+                      {bookings?.filter((booking) => booking?.id === id)[0].date}
+                    </div>
+                    <button
+                      className='btn btn-danger' style={{ width: '15rem', maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}
+                      onClick={() => cancelBooking()}
+                      disabled={cancelling}
                     >
-                    Cancel Booking
-                  </button>
-                  <div style={{ marginLeft: '11px', fontSize: '1.2rem'}}>
-                    Your visit already booked for date{" "}
-                    {bookings?.filter((booking) => booking?.id === id)[0].date}
+                      Cancel Booking
+                    </button>
                   </div>
                 </>
-              ) : ( 
+              ) : (
                 <BookingModal
-                propertyId={id}
-                email={user?.email}
+                  propertyId={id}
+                  email={user?.email}
                 />
-                )}
+              )}
             </div>
 
           </div>
