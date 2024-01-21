@@ -141,19 +141,45 @@ export const toFav = async (req, res) => {
 
 // ROUTE: 6 : Get all Fav : POST "api/user/getAllFavs"
 // Get all favorite residencies. Login required
-export const getAllfavs = async (req, res) => {
-    const {email} = req.body
+// export const getAllfavs = async (req, res) => {
+//     const {email} = req.body
 
-    try{
+//     try{
+//         const favRes = await prisma.user.findUnique({
+//             where: {email},
+//             select: {
+//                 favResidenciesId: true
+//             }
+//         })
+//         res.status(200).send(favRes)
+//     }
+//     catch(err){
+//         throw new Error(err.message)
+//     }
+// }
+
+export const getAllfavs = async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ message: 'Email is required in the request body' });
+    }
+
+    try {
         const favRes = await prisma.user.findUnique({
-            where: {email},
+            where: { email },
             select: {
                 favResidenciesId: true
             }
-        })
-        res.status(200).send(favRes)
-    }
-    catch(err){
-        throw new Error(err.message)
+        });
+
+        if (!favRes) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(favRes);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 }
+

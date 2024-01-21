@@ -51,7 +51,7 @@ const Property = () => {
   return (
     <div style={{ gap: '2rem', position: 'relative', marginTop: '20px', fontWeight: 450 }} className='container'>
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', cursor: 'pointer' }} className="like">
-        <Heart />
+        <Heart id={id}/>
       </div>
       <img src={data?.image} style={{ alignSelf: 'center', maxHeight: '35rem', width: '100%', borderRadius: '1rem', objectFit: 'cover' }} />
       {/* left side  */}
@@ -113,9 +113,11 @@ const Property = () => {
               {bookings?.map((booking) => booking.id).includes(id) ? (
                 <>
                   <div style={{marginLeft:'10px'}}>
-                    <div style={{ marginLeft: '11px', fontSize: '1.2rem' }}>
-                      Your visit already booked for date{" "}
+                    <div style={{ marginLeft: '11px', fontSize: '1.4rem' }}>
+                      Your visit booked for date{" "}
+                      <span style={{fontSize:'1.5rem'}}>
                       {bookings?.filter((booking) => booking?.id === id)[0].date}
+                      </span>
                     </div>
                     <button
                       className='btn btn-danger' style={{ width: '15rem', maxWidth: '15rem', marginTop: '10px', marginLeft: '11px', padding: '10px', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1rem' }}

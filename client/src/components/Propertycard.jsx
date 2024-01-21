@@ -13,7 +13,8 @@ const PropertyCard = ({ card, i }) => {
     >
       <div className="d-flex flex-wrap">
         <div key={i} style={{ width: '250px', marginRight: '0px', cursor: 'pointer' }} onClick={() => navigate(`../properties/${card.id}`)} >
-          <Heart id={card.id} isFavorite={card.isFavorite} />
+          {/* <Heart id={card.id} isFavorite={card.isFavorite} /> */}
+          <Heart id={card.id} />
           <img src={card.image} alt="home" style={{ width: '250px', height: '10rem', borderRadius: '10px' }} />
           <div>
             <span style={{ color: 'orange', fontSize: '1.3rem' }}>$</span>

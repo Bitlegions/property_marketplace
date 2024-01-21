@@ -15,7 +15,7 @@ import Layout from './components/Layout';
 function App() {
   const queryClient = new QueryClient();
   const [userDetails, setuserDetails] = useState({
-    favourite: [],
+    favourites: [],
     bookings: [],
     token: null
   })
