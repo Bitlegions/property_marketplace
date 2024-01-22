@@ -4,7 +4,8 @@ import { createResidency, getAllRes, getResidency } from "../controllers/resiCon
 
 const router = express.Router()
 
-router.post('/create',jwtCheck, createResidency)
+// router.post('/create',jwtCheck, createResidency)
+router.post('/create', createResidency)
 router.get('/getAllRes', getAllRes)
 router.get('/:id', getResidency)
 

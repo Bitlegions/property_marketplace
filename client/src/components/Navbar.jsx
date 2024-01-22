@@ -1,10 +1,22 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuthCheck from '../hooks/useAuthCheck';
+import AddPropertyModal from './AddPropertyModal';
 import ProFileMenu from './ProFileMenu';
 
 const Navbar = () => {
-    const {loginWithRedirect,isAuthenticated,user,logout} = useAuth0()
+    const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0()
+    const [modalOpened, setModalOpened] = useState(false)
+    const { validateLogin } = useAuthCheck();
+
+
+    const handleAddPropertyClick = () => {
+        if (validateLogin()) {
+            setModalOpened(true);
+        }
+
+    }
 
     return (
         <nav id='top' className="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,18 +31,24 @@ const Navbar = () => {
                         <Link className="nav-link" to="/properties">Properties</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#contact-us">Contact Us</a> 
+                        <a className="nav-link" href="#contact-us">Contact Us</a>
                     </li>
+
+                    {/* Add proprerty button */}
                     <li className="nav-item">
-                        {/* <Link className="nav-link" to="#value">Add property</Link> */}
+                        <Link onClick={handleAddPropertyClick} className="nav-link" >Add property</Link>
+                        <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
+                        {/* <AddPropertyModal /> */}
                     </li>
+
+                    {/* login button */}
                     <div className="nav-item">
-                        {!isAuthenticated ? 
-                            <div className="d-flex" style={{marginLeft:'8vh'}}>
-                                <button onClick={()=> loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
+                        {!isAuthenticated ?
+                            <div className="d-flex" style={{ marginLeft: '8vh' }}>
+                                <button onClick={() => loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
                             </div>
-                         : 
-                         <ProFileMenu user={user} logout={logout} />
+                            :
+                            <ProFileMenu user={user} logout={logout} />
                         }
                     </div>
                 </ul>
