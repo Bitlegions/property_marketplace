@@ -76,13 +76,13 @@ const Property = () => {
             {/* parkings */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <AiTwotoneCar size={20} color="#1F3E72" />
-              <span>{data?.facilities.parkings} Parking</span>
+              <span>{data?.facilities?.parkings} Parking</span>
             </div>
 
             {/* rooms */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '7px' }}>
               <MdMeetingRoom size={20} color="#1F3E72" />
-              <span>{data?.facilities.bedrooms} Room/s</span>
+              <span>{data?.facilities?.bedrooms} Room/s</span>
             </div>
           </div>
 

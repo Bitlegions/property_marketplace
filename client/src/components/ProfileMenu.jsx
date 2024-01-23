@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ProfileMenu = ({ user, logout }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -15,14 +16,14 @@ const ProfileMenu = ({ user, logout }) => {
             <div style={{ display: isDropdownOpen ? 'block' : 'none', borderRadius: '10px', position: 'absolute', top: '50px', right: '0', backgroundColor: '#f9f9f9', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', padding: '10px', zIndex: '1', width: '200px' }}>
                 <ul style={{ listStyle: 'none', padding: '0', fontSize: '20px' }} >
                     <li>
-                        <a href="#" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
+                        <Link to="/favourites" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
                             Favourites
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
+                        <Link to="/bookings" style={{ display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}>
                             Booking
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a style={{ cursor: 'pointer', display: 'block', padding: '5px', textDecoration: 'none', color: '#333' }}

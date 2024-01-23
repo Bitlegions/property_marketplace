@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Property from './pages/Property';
 import UserDetailContext from './context/UserDetailContext';
 import Layout from './components/Layout';
+import Bookings from './pages/Bookings.jsx';
+import Favourites from './pages/Favourites';
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
                   <Route path='/' element={<Website />} />
                   <Route path='/properties' element={<Properties />} />
                   <Route path='/properties/:propertyId' element={<Property />} />
+                  <Route path='/bookings' element={<Bookings />} />
+                  <Route path='/favourites' element={<Favourites />} />
 
                   </Route>
                 </Routes>
