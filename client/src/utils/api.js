@@ -178,6 +178,7 @@ export const createResidency = async (data, token) => {
         // },
       }
     )
+    res()
     console.log("data from api after post request");
   }catch(error)
   {
