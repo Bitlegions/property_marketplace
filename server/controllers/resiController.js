@@ -7,9 +7,6 @@ export const createResidency = async (req, res) => {
   const {
     title, description, price, address, country, city, facilities, image, userEmail,
   } = req.body;
-  console.log("from resiController");
-  console.log(userEmail);
-  console.log(address);
   const residencyExists = await prisma.residency.findUnique({
     where: { address_userEmail: { address, userEmail } },
   });  

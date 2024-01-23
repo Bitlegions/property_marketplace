@@ -99,7 +99,7 @@ const Property = () => {
             </span>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', width:'70rem' }}>
 
             {/* Map componenet */}
             <div className="map" style={{ width: '60%', height: '100%', paddingBottom: '70px' }}>

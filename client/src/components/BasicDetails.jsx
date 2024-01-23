@@ -71,7 +71,8 @@ const BasicDetails = ({ prevStep, nextStep, propertyDetails, setPropertyDetails 
                     placeholder="1000"
                     name="price"
                     value={price || ""}
-                    onChange={(e) => form.setValues({ ...form.values, price: e.target.value })}
+                    // onChange={(e) => form.setValues({ ...form.values, price: e.target.value })}
+                    onChange={(e) => form.setValues({ ...form.values, price: parseInt(e.target.value, 10) })}
                     inputProps={{ min: 0 }}
                     required
                 />
