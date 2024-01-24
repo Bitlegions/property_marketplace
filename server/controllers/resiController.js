@@ -43,16 +43,6 @@ export const getAllRes = async (req, res) => {
 
 }
 
-export const getall = async (req, res) => {
-  const residencies = await prisma.residency.findMany({
-    orderBy: {
-      createdAt: "desc"
-    }
-  })
-  res.send(residencies)
-
-}
-
 
 // 3. ROUTE: GET "/api/residency/:id
 // Get particular residency. No Login Required

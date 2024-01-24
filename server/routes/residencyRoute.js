@@ -9,7 +9,5 @@ router.post('/create', createResidency)
 router.get('/getAllRes', getAllRes)
 router.get('/:id', getResidency)
 
-router.get('/getallres', getall)
-
 
 export {router as residencyRoute}
