@@ -47,8 +47,8 @@ const Heart = ({ id, isFavorite }) => {
   
 
   const {mutate} = useMutation({
-    // mutationFn: () => toFav(id, user?.email, token),
-    mutationFn: () => toFav(id, user?.email),
+    mutationFn: () => toFav(id, user?.email, token),
+    // mutationFn: () => toFav(id, user?.email),
     onSuccess: ()=> {
       setuserDetails((prev)=> (
             {

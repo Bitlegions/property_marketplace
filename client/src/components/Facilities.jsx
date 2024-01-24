@@ -45,15 +45,15 @@ const Facilities = ({
    // ==================== upload logic ====================
    const { user } = useAuth0();
    const {
-    //  userDetails: { token },
+     userDetails: { token },
    } = useContext(UserDetailContext);
    const { refetch: refetchProperties } = useProperties();
 
    const {mutate, isLoading} = useMutation({
     mutationFn: ()=> createResidency({
         ...propertyDetails, facilities: {bedrooms, parkings , bathrooms},userEmail: user?.email
-    // }, token),
-  }, ),
+    }, token),
+    // }, ),
     onError: ({ response }) => toast.error(response.data.message, {position: "bottom-right"}),
     onSettled: ()=> {
       toast.success("Added Successfully", {position: "bottom-right"});

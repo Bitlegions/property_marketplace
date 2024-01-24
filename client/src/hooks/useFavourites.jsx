@@ -14,8 +14,8 @@ const useFavourites = () => {
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: "allFavourites",
-    // queryFn: () => getAllFavs(user?.email, userDetails?.token),
-    queryFn: () => getAllfavs(user?.email),
+    queryFn: () => getAllfavs(user?.email, userDetails?.token),
+    // queryFn: () => getAllfavs(user?.email),
     onSuccess: (data) =>
       setuserDetails((prev) => ({ ...prev, favourites: data })),
     enabled: user !== undefined,

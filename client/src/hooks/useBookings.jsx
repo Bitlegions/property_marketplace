@@ -11,8 +11,8 @@ const useBookings = () => {
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: "allBookings",
-    // queryFn: () => getAllBookings(user?.email, userDetails?.token),
-    queryFn: () => getAllBookings(user?.email),
+    queryFn: () => getAllBookings(user?.email, userDetails?.token),
+    // queryFn: () => getAllBookings(user?.email),
     onSuccess: (data) =>
       setuserDetails((prev) => ({ ...prev, bookings: data })),
     enabled: user !== undefined,

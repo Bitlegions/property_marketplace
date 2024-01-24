@@ -23,8 +23,7 @@ function BookingModal({ email, propertyId }) {
     date1.getFullYear() === date2.getFullYear();
 
     const {
-      // userDetails: { token },
-      userDetails,
+      userDetails: { token },
       setuserDetails  
     } = useContext(UserDetailContext);
 
@@ -50,8 +49,8 @@ function BookingModal({ email, propertyId }) {
     
 
     const { mutate, isLoading } = useMutation({
-      // mutationFn: () => bookVisit(value, propertyId, email, token),
-      mutationFn: () => bookVisit(value, propertyId, email),
+      mutationFn: () => bookVisit(value, propertyId, email, token),
+      // mutationFn: () => bookVisit(value, propertyId, email),
     onSuccess: () => handleBookingSuccess(),
     onError: ({ response }) => toast.error(response.data.message)
     })
