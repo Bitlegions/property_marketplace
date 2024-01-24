@@ -1,6 +1,6 @@
 import express  from "express";
 import jwtCheck from "../config/auth0Config.js";
-import { createResidency, getall, getAllRes, getResidency } from "../controllers/resiController.js";
+import { createResidency, getAllRes, getResidency } from "../controllers/resiController.js";
 
 const router = express.Router()
 
