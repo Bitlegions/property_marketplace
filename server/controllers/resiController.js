@@ -33,15 +33,48 @@ export const createResidency = async (req, res) => {
 
 // 2. ROUTE: GET "/api/residency/getAllRes
 // Get all residency. No Login Required
-export const getAllRes = async (req, res) => {
-  const residencies = await prisma.residency.findMany({
-    orderBy: {
-      createdAt: "desc"
-    }
-  })
-  res.send(residencies)
 
-}
+
+// export const getAllRes = async (req, res) => {
+//   const residencies = await prisma.residency.findMany({
+//     orderBy: {
+//       createdAt: "desc"
+//     }
+//   })
+//   res.send(residencies)
+
+// }
+
+
+
+
+export const getAllRes = async (req, res) => {
+  try {
+    const residencies = await prisma.residency.findMany({
+      orderBy: {
+        createdAt: "desc"
+      }
+    });
+
+    // Filter residencies with null value in updatedAt
+    const residenciesWithNullUpdatedAt = residencies.filter(
+      (residency) => residency.updatedAt === null
+    );
+
+    // Log the filtered residencies
+    console.log("Residencies with null updatedAt:", residenciesWithNullUpdatedAt);
+
+    // Send all residencies in the response
+    res.send(residencies);
+  } catch (error) {
+    console.error("Error fetching residencies:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+
+
+
 
 
 // 3. ROUTE: GET "/api/residency/:id
