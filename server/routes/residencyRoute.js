@@ -1,6 +1,6 @@
 import express  from "express";
 import jwtCheck from "../config/auth0Config.js";
-import { createResidency, getAllRes, getResidency } from "../controllers/resiController.js";
+import { createResidency, getall, getAllRes, getResidency } from "../controllers/resiController.js";
 
 const router = express.Router()
 
@@ -8,5 +8,8 @@ const router = express.Router()
 router.post('/create', createResidency)
 router.get('/getAllRes', getAllRes)
 router.get('/:id', getResidency)
+
+router.get('/getallres', getall)
+
 
 export {router as residencyRoute}

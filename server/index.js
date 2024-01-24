@@ -19,6 +19,8 @@ app.use(cors());
 app.use('/api/user', userRoute)
 app.use('/api/residency', residencyRoute)
 
+app.use('/', console.log("thi is root directory "))
+
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
