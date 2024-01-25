@@ -55,7 +55,6 @@ export const createUser = async (email, token) => {
     toast.error("Something went wrong while creating user, Please try again");
     throw error;
   }
-  console.log("createUser is called in api.js");
 };
 
 
