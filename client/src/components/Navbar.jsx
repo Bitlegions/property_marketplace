@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuthCheck from '../hooks/useAuthCheck';
 import AddPropertyModal from './AddPropertyModal';
-import ProFileMenu from './ProFileMenu';
+import ProfileMenu from './ProfileMenu';
 
 const Navbar = () => {
     const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0()
@@ -47,7 +47,7 @@ const Navbar = () => {
                                 <button onClick={() => loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
                             </div>
                             :
-                            <ProFileMenu user={user} logout={logout} />
+                            <ProfileMenu user={user} logout={logout} />
                         }
                     </div>
                 </ul>
