@@ -56,7 +56,7 @@ const Facilities = ({
     // }, ),
     onError: ({ response }) => toast.error(response.data.message, {position: "bottom-right"}),
     onSettled: ()=> {
-      toast.success("Added Successfully", {position: "bottom-right"});
+      toast.success("Property Added Successfully", {position: "bottom-right"});
       setPropertyDetails({
         title: "",
         description: "",

@@ -16,7 +16,7 @@ const Layout = () => {
     useBookings()
 
     const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
-    const { setUserDetails } = useContext(UserDetailContext);
+    const { setuserDetails } = useContext(UserDetailContext);
 
     const { mutate } = useMutation({
         mutationKey: [user?.email],
@@ -26,7 +26,6 @@ const Layout = () => {
     useEffect(() => {
         const getTokenAndRegister = async () => {
             try {
-                console.log("Enter in try block");
 
                 // "ERROR IN 'RES', causing userDetails to be unable to fetch, so createUser reqvest can't call" 
                 const res = await getAccessTokenWithPopup({
@@ -35,11 +34,9 @@ const Layout = () => {
                         scope: "openid profile email",
                     },
                 });
-                console.log("res in Layout.jsx is :");
-                console.log(res);
 
                 localStorage.setItem("access_token : ", res);
-                setUserDetails((prev) => ({ ...prev, token: res }));
+                setuserDetails((prev) => ({ ...prev, token: res }));
                 mutate(res);
             } catch (error) {
                 console.error("Error obtaining access token:", error);

@@ -29,7 +29,7 @@ function BookingModal({ email, propertyId }) {
 
     
     const handleBookingSuccess = () => {
-      toast.success("You have booked your visit", {
+      toast.success("Your appointment is booked", {
         position: "bottom-right",
       });
       

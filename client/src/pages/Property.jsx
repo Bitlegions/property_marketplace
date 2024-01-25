@@ -31,8 +31,6 @@ const Property = () => {
         ...prev,
         bookings: prev.bookings.filter((booking) => booking?.id !== id),
       }));
-
-      toast.error("Booking cancelled", { position: "bottom-right" });
     },
   });
 

@@ -52,7 +52,7 @@ export const createUser = async (email, token) => {
       position: "bottom-right",
     });
   } catch (error) {
-    // toast.error("Something went wrong, Please try again");
+    toast.error("Something went wrong while creating user, Please try again");
     throw error;
   }
   console.log("createUser is called in api.js");
@@ -93,11 +93,11 @@ export const removeBooking = async (id, email, token) => {
         },
       }
     )
-    // toast.error("Cancle booking successfully", {
-    //   position: "bottom-right",
-    // });
+    toast.error("Your visit has been cancelled", {
+      position: "bottom-right",
+    });
   } catch (error) {
-    // toast.error("Something went wrong, Please try again");
+    toast.error("Something went wrong while canceling bookiong, Please try again");
 
     throw error;
   }
@@ -115,8 +115,8 @@ export const toFav = async (id, email, token) => {
         },
       }
     );
-  } catch (e) {
-    throw e;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -137,7 +137,8 @@ export const getAllfavs = async (email, token) => {
     return res.data["favResidenciesId"]
 
   } catch (error) {
-    toast.error("Something went wrong while fetching favs");
+    // toast.error("Something went wrong while fetching favs");
+    console.log("Something went wrong while fetching favs");
     throw error
   }
 } 
@@ -145,6 +146,9 @@ export const getAllfavs = async (email, token) => {
 export const getAllBookings = async (email, token) => {
 // export const getAllBookings = async (email) => {
   // if(!token) return 
+  console.log("email & tokern in getAllBookings: ");
+  console.log(email);
+  console.log(token);
   try {
     const res = await api.post(
       `/user/getAllBookings`, { email },
@@ -157,7 +161,8 @@ export const getAllBookings = async (email, token) => {
     return res.data["bookedVisits"]
 
   } catch (error) {
-    toast.error("Something went wrong while fetching bookings");
+    // toast.error("Something went wrong while fetching bookings");
+    console.log("Something went wrong while fetching bookings");
     throw error
   }
 } 
