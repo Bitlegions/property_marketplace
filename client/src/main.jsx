@@ -15,8 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         authorizationParams={{
           redirect_uri: "https://property-marketplace-client-4uerzdvdg-bitlegions-projects.vercel.app/"
         }}
-        // audience="http://localhost:5555"
-        audience = "https://property-marketplace-server-6i7hf2l2u-bitlegions-projects.vercel.app"
+        audience="http://localhost:5555"
+        // audience = "https://property-marketplace-server-6i7hf2l2u-bitlegions-projects.vercel.app"
         scope="openid profile email"
       >
         <App />
