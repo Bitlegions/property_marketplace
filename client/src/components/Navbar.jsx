@@ -30,7 +30,7 @@ const Navbar = () => {
                         <Link className="nav-link" to="/properties">Properties</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="contact-us">Contact Us</a>
+                        <a className="nav-link" href="#contact-us">Contact Us</a>
                     </li>
 
                     {/* Add proprerty button */}
