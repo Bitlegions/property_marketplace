@@ -51,7 +51,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
                 }}
             >
                 {/* left side */}
-                <div className="flexColStart" style={{ flex: 1, gap: "3rem" }}>
+                <div className="flexColStart" style={{ flex: 1, gap: "3rem", paddingTop: '20px' }}>
                     <MuiSelect
                         fullWidth
                         displayEmpty
@@ -59,6 +59,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
                         variant="outlined"
                         value={country || ""}
                         onChange={(e) => form.setValues({ ...form.values, country: e.target.value })}
+                        style={{ margin: '5px 0' }}
                     >
                         <MenuItem value="" disabled>
                             Select Country
@@ -76,6 +77,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
                         variant="outlined"
                         value={city || ""}
                         onChange={(e) => form.setValues({ ...form.values, city: e.target.value })}
+                        style={{ margin: '5px 0' }}
                     />
 
                     <TextField
@@ -84,11 +86,12 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
                         variant="outlined"
                         value={address || ""}
                         onChange={(e) => form.setValues({ ...form.values, address: e.target.value })}
+                        style={{ margin: '5px 0' }}
                     />
                 </div>
 
                 {/* right side */}
-                <div className="flexColStart map" style={{ flex: 1, width: '60%', height: '100%', paddingBottom: '70px' }}>
+                <div className="flexColStart map" style={{ flex: 1, width: '60%', height: '50',overflow: 'visible',  paddingBottom: '10px' }}>
                     <Map address={address} city={city} country={country} />
                 </div>
 
@@ -97,9 +100,9 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
                 </div> */}
 
             </div>
-            <div style={{ textAlign: "center", marginTop: "1rem" }}>
-                <Button type="submit" variant="contained" color="primary">
-                    Next Step
+            <div style={{ textAlign: "center", marginTop: "4rem", position: 'relative' }}>
+                <Button type="submit" variant="contained" color="primary" style={{ position: 'absolute', bottom: 0, right: 0 }}>
+                    Next
                 </Button>
             </div>
         </form>

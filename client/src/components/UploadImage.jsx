@@ -1,4 +1,4 @@
-import { Button } from '@mui/base';
+import { Button } from '@mui/material';
 import React, { useEffect, useState, useRef } from 'react';
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
@@ -26,7 +26,7 @@ const UploadImage = ({ propertyDetails, setPropertyDetails, nextStep, prevStep }
     const handleNext = () => {
         setPropertyDetails((prev) => ({ ...prev, image: imageURL }));
         nextStep();
-      };
+    };
 
 
     return (
@@ -53,7 +53,16 @@ const UploadImage = ({ propertyDetails, setPropertyDetails, nextStep, prevStep }
                 <div
                     className="uploadedImage"
                     style={{
-                        width: '80%', height: '25rem', borderRadius: '10px', cursor: 'pointer', overflow: 'hidden',
+                        width: '80%',
+                        height: '25rem',
+                        borderRadius: '10px',
+                        cursor: 'pointer',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: 'auto',
                     }}
                     onClick={() => widgetRef.current?.open()}
                 >
@@ -61,16 +70,19 @@ const UploadImage = ({ propertyDetails, setPropertyDetails, nextStep, prevStep }
                         src={imageURL}
                         alt=""
                         style={{
-                            width: '100%', height: '100%', objectFit: 'cover',
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
                         }}
                     />
                 </div>
-
             )}
 
-            <div style={{ textAlign: "center", marginTop: "1rem" }}>
-                <Button onClick={prevStep}  variant="default"   color="primary" >Back</Button>
-                <Button onClick={handleNext} disabled={!imageURL}  color="primary" >Next</Button>
+
+
+            <div style={{ textAlign: "center", marginTop: "10rem", position: 'relative' }}>
+                <Button onClick={prevStep} variant="contained" color="primary" style={{ position: 'absolute', bottom: 0, left: 0 }} >Back</Button>
+                <Button onClick={handleNext} disabled={!imageURL} variant="contained" color="primary" style={{ position: 'absolute', bottom: 0, right: 0 }} >Next</Button>
             </div>
         </div>
     )

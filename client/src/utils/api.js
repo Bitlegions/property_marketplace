@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 
 export const api = axios.create({
   baseURL: 'https://property-marketplace-server-4mse6auv9-bitlegions-projects.vercel.app/api'
+  // baseURL: 'http://localhost:5555/api'
 })
 
 export const getAllProperties = async () => {
@@ -52,7 +53,7 @@ export const createUser = async (email, token) => {
       position: "bottom-right",
     });
   } catch (error) {
-    toast.error("Something went wrong while creating user, Please try again");
+    // toast.error("Something went wrong while creating user!");
     throw error;
   }
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "@mantine/form";
-import { Box, Button, Container, TextField } from "@mui/material";
+import {Button, Container, TextField } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserDetailContext from '../context/UserDetailContext'
 import useProperties from '../hooks/useProperties'
@@ -130,14 +130,10 @@ const Facilities = ({
           inputProps={{ min: 0 }}
           required
         />
-        <Box display="flex" justifyContent="space-between" marginTop="20px">
-          <Button variant="contained" color="primary" onClick={prevStep}>
-            Back
-          </Button>
-          <Button type="submit" color="success" variant="contained" disabled={isLoading} >
-            {isLoading ? "Submitting" : "Add Property"}
-          </Button>
-        </Box>
+        <div style={{ textAlign: "center", marginTop: "20rem", position: 'relative' }}>
+                        <Button onClick={prevStep} variant="contained" color="primary" style={{ position: 'absolute', bottom: 0, left: 0 }} >Back</Button>
+                        <Button type="submit" disabled={isLoading} variant="contained" color="success" style={{ position: 'absolute', bottom: 0, right: 0 }} >{isLoading ? "Submitting" : "Add Property"}</Button>
+                    </div>
       </form>
     </Container>
   );

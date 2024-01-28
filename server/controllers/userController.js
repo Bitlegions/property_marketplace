@@ -15,9 +15,8 @@ export const createUser = async (req, res) => {
       message: "User Created Succesfully",
       user: user,
     });
-    console.log("User create successfully & email is :" + email);
   } else {
-    res.status(403).send({ message: "User Already Registered" });
+    res.status(403).send({ message: "User Already Exist!" });
   }
 };
 
