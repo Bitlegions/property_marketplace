@@ -13,8 +13,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         domain="dev-1a054bt7u1homz70.us.auth0.com"
         clientId="AyXRwpBCxNyAwM7aUQfKPDXsKB50Sy0g"
         authorizationParams={{
-          // redirect_uri: "https://property-marketplace-client-qs6rc84sl-bitlegions-projects.vercel.app"
-          redirect_uri: "http://localhost:5173"
+          redirect_uri: "https://property-marketplace-client-92f12y6b5-bitlegions-projects.vercel.app/"
+          // redirect_uri: "http://localhost:5173"
         }}
         audience="http://localhost:5555"
         scope="openid profile email"
