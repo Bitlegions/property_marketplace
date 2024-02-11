@@ -29,28 +29,38 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link className="nav-link" to="/properties">Properties</Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#contact-us">Contact Us</a>
-                    </li>
 
                     {/* Add proprerty button */}
                     <li className="nav-item">
                         <Link onClick={handleAddPropertyClick} className="nav-link" >Add property</Link>
                         <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
-                        {/* <AddPropertyModal /> */}
                     </li>
+                    {isAuthenticated ?
+                        <li>
+                            <li className="nav-item">
+                                <Link to="/favourites" className="nav-link">
+                                    Favourites
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/bookings" className="nav-link">
+                                    Booking
+                                </Link>
+                            </li>
+                        </li> :
+                        null}
 
                     {/* login button */}
-                    <div className="nav-item">
-                        {!isAuthenticated ?
-                            <div className="d-flex" style={{ marginLeft: '8vh' }}>
-                                <button onClick={() => loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
-                            </div>
-                            :
-                            <ProfileMenu user={user} logout={logout} />
-                        }
-                    </div>
                 </ul>
+            </div>
+            <div className="nav-item">
+                {!isAuthenticated ?
+                    <div className="d-flex" style={{ marginLeft: '5vh' }}>
+                        <button onClick={() => loginWithRedirect()} className="btn btn-dark mx-1" role="button">Login</button>
+                    </div>
+                    :
+                    <ProfileMenu user={user} logout={logout} />
+                }
             </div>
         </nav>
     );
